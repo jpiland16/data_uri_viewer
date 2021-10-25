@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>
+            Data URI Viewer
+        </title>
+
+        <style>
+            html, body {
+                height: 100%;
+                width: 100%;
+                color: white;
+                background-color: black;
+                margin: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            div {
+                margin: auto;  
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            audio {
+                width: 100%;
+            }
+
+            image {
+                margin: auto;
+            }
+
+        </style>
+
+        <script>
+
+            function loadData() {
+                dataType = window.location.search.substring(1, 11)
+                if (dataType == "data:audio") {
+                    document.body.innerHTML = 
+                    "<div> <audio controls id='av'> <source src='" + window.location.search.substring(1) + "'> </audio> </div>"
+                } else if (dataType == "data:image") {
+                    document.body.innerHTML = 
+                    "<div> <image src='" + window.location.search.substring(1) + "' /> </div>"
+                }
+            }
+        </script>
+
+    </head>
+
+    <body onload="loadData()"></body>
+
+</html>
